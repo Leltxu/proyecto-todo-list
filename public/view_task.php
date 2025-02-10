@@ -21,7 +21,11 @@ if (!empty($mensajse)) {
         echo "<h3>{$tarea['title']}</h3>";
         echo "<p>{$tarea['descripcion']}</p>";
         echo "<p><strong>$completado</strong></p>";
-        echo "<a href='complete_task.php?id={$tarea['id']}' class='btn-completar'>Marcar como completado</a>";
+        if ($tarea['completed'] == 0) {
+            echo "<a href='complete_task.php?id={$tarea['id']}&value={$tarea['completed']}' class='btn-completar'>Marcar como completado</a>";
+        } else {
+            echo "<a href='complete_task.php?id={$tarea['id']}&value={$tarea['completed']}' class='btn-completar'>Marcar como no completado</a>";
+        }
         echo "<a href='delete_task.php?id={$tarea['id']}' class='btn-eliminar'>Eliminar</a>";
         echo "</div>";
     }
